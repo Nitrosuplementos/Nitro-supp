@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nitro Suplementos | Performance & Luxo Esportivo</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              bg: '#050505',
+              card: '#0F131C',
+              cardBorder: '#262013',
+              gold: '#D4AF37',
+              goldLight: '#F3E5AB',
+              goldDark: '#997A15'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #050505;
+      color: #F8FAFC;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    /* Ocultar Scrollbars */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Gradiente Dourado Metálico */
+    .gold-gradient {
+      background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #997A15 100%);
+    }
+
+    .gold-text-gradient {
+      background: linear-gradient(135deg, #FFF5C0 0%, #D4AF37 50%, #AA820A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-border-gradient {
+      border-image: linear-gradient(135deg, #D4AF37, #33280B) 1;
+    }
+
+    /* Efeitos de Glow Dourado */
+    .gold-glow {
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .gold-glow-hover:hover {
+      box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+      border-color: #D4AF37;
+    }
+
+    /* Animação suave para botão WhatsApp */
+    @keyframes pulse-whatsapp {
+      0%, 100% {
+        box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(34, 197, 94, 0.8);
+        transform: scale(1.05);
+      }
+    }
+
+    .btn-whatsapp-pulse {
+      animation: pulse-whatsapp 2s infinite ease-in-out;
+    }
+
+    /* Transições de Modal Glassmorphism Dark */
+    .modal-backdrop {
+      background: rgba(5, 5, 5, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    .glass-card {
+      background: rgba(15, 19, 28, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+
+    /* Custom Checkbox Tech Dourado */
+    .custom-checkbox {
+      appearance: none;
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid #52431F;
+      border-radius: 0.375rem;
+      background-color: #050505;
+      cursor: pointer;
+      display: grid;
+      place-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .custom-checkbox:checked {
+      background: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 100%);
+      border-color: #D4AF37;
+    }
+
+    .custom-checkbox:checked::before {
+      content: "\f00c";
+      font-family: "Font Awesome 6 Free";
+      font-weight: 900;
+      color: #050505;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body class="pb-24 relative min-h-screen selection:bg-amber-500 selection:text-black">
+
+  <!-- HEADER -->
+  <header class="relative w-full h-72 sm:h-96 bg-cover bg-center flex flex-col justify-between p-4 sm:p-6 border-b border-amber-900/30" style="background-image: url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1200&auto=format&fit=crop');">
+    <div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-black/70"></div>
+    
+    <div class="relative z-10 flex items-center justify-between max-w-7xl mx-auto w-full">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/30 text-xs text-amber-200">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+        </span>
+        Enviando para toda Barcarena
+      </div>
+
+      <!-- Search Trigger Button -->
+      <button onclick="toggleModal('searchModal', true)" class="w-10 h-10 rounded-full bg-black/80 backdrop-blur-md border border-amber-500/30 flex items-center justify-center text-amber-400 hover:text-white hover:border-amber-400 transition-all gold-glow-hover">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+
+    <!-- Hero Title & Logo Concept -->
+    <div class="relative z-10 my-auto text-center max-w-2xl mx-auto space-y-2">
+      <div class="inline-flex items-center justify-center gap-2 text-amber-400 mb-1">
+        <i class="fa-solid fa-heart-pulse text-lg tracking-widest"></i>
+        <span class="text-xs font-bold tracking-[0.3em] uppercase">High Performance</span>
+        <i class="fa-solid fa-heart-pulse text-lg tracking-widest"></i>
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight uppercase">
+        <span class="gold-text-gradient">NITRO</span> <span class="text-white">SUPLEMENTOS</span>
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-400 font-medium max-w-md mx-auto">
+        Nutrição esportiva premium e suplementação de altíssima pureza para resultados extraordinários.
+      </p>
+    </div>
+  </header>
+
+  <!-- CATEGORIES BAR (Sticky Top) -->
+  <nav class="sticky top-0 z-20 bg-[#050505]/90 backdrop-blur-md border-b border-amber-900/20 py-3 px-4">
+    <div class="flex gap-2 overflow-x-auto no-scrollbar max-w-7xl mx-auto" id="categoriesContainer">
+      <!-- Dynamic Categories -->
+    </div>
+  </nav>
+
+  <!-- MAIN CATALOG -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-lg sm:text-xl font-extrabold text-white uppercase tracking-wide flex items-center gap-2">
+        <i class="fa-solid fa-bolt text-amber-400"></i> Catálogo em Destaque
+      </h2>
+      <span class="text-xs text-amber-500/80 font-medium" id="itemCount">Carregando produtos...</span>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      <!-- Dynamic Products -->
+    </div>
+  </main>
+
+  <!-- FLOATING BOTTOM BAR (Cart Summary) -->
+  <div id="cartBar" class="fixed bottom-0 left-0 right-0 z-30 bg-[#0A0D14]/95 backdrop-blur-lg border-t border-amber-500/30 p-4 transform translate-y-full transition-transform duration-300 ease-in-out shadow-2xl">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/40 flex items-center justify-center text-amber-400">
+            <i class="fa-solid fa-bag-shopping text-xl"></i>
+          </div>
+          <span id="cartBadge" class="absolute -top-1 -right-1 gold-gradient text-black text-xs font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+        </div>
+        <div>
+          <p class="text-[10px] text-amber-400/80 uppercase font-bold tracking-widest">Minha Sacola</p>
+          <p id="cartTotal" class="text-lg font-black text-white">R$ 0,00</p>
+        </div>
+      </div>
+
+      <button onclick="openCheckoutModal()" class="flex-1 sm:flex-none px-6 py-3 rounded-xl gold-gradient text-black font-extrabold text-sm shadow-lg gold-glow hover:brightness-110 transition-all flex items-center justify-center gap-2 uppercase tracking-wide">
+        Ver Carrinho
+        <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- FLOATING WHATSAPP BUTTON -->
+  <a id="whatsappBtn" href="https://wa.me/5591900000000?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20d%C3%BAvidas%20sobre%20os%20suplementos." target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center text-2xl shadow-xl transition-all duration-300 btn-whatsapp-pulse hover:bg-emerald-400">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- SEARCH MODAL -->
+  <div id="searchModal" class="fixed inset-0 z-50 modal-backdrop flex flex-col hidden opacity-0 transition-opacity duration-300">
+    <div class="p-4 sm:p-6 border-b border-amber-900/30 flex items-center gap-3 bg-[#0A0D14]">
+      <i class="fa-solid fa-magnifying-glass text-amber-400 text-xl"></i>
+      <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Busque por Whey, Creatina, Pré-treino..." class="w-full bg-transparent text-white placeholder-slate-500 focus:outline-none text-lg">
+      <button onclick="toggleModal('searchModal', false)" class="text-slate-400 hover:text-white p-2">
+        <i class="fa-solid fa-xmark text-xl"></i>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-4 sm:p-6 max-w-7xl mx-auto w-full">
+      <div id="searchResults" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Search Results Dynamic -->
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL MODAL (Slide-up) -->
+  <div id="productModal" class="fixed inset-0 z-50 modal-backdrop hidden items-end sm:items-center justify-center transition-all duration-300">
+    <div class="bg-[#0A0D14] border border-amber-500/30 w-full sm:max-w-2xl sm:rounded-2xl rounded-t-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl transform translate-y-full transition-transform duration-300" id="productModalContent">
+      
+      <!-- Header Image / Close -->
+      <div class="relative h-64 sm:h-72 bg-black flex items-center justify-center p-4 border-b border-amber-900/20">
+        <button onclick="toggleModal('productModal', false)" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-black/80 border border-amber-500/30 text-amber-400 flex items-center justify-center hover:bg-amber-500 hover:text-black transition-all">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <img id="modalProductImg" src="" alt="Produto" class="max-h-full max-w-full object-contain">
+      </div>
+
+      <!-- Details Container -->
+      <div class="p-6 overflow-y-auto space-y-6 flex-1 no-scrollbar">
+        <div>
+          <span id="modalProductCategory" class="text-xs font-bold text-amber-400 uppercase tracking-widest">Categoria</span>
+          <h3 id="modalProductTitle" class="text-2xl font-black text-white mt-1">Nome do Produto</h3>
+          <p id="modalProductPrice" class="text-2xl font-black gold-text-gradient mt-2">R$ 0,00</p>
+        </div>
+
+        <!-- Technical Specs -->
+        <div class="bg-black/60 border border-amber-900/30 rounded-xl p-4">
+          <h4 class="text-xs font-bold text-amber-400/80 uppercase tracking-wider mb-2">Especificações Técnicas</h4>
+          <p id="modalProductDesc" class="text-sm text-slate-300 leading-relaxed"></p>
+        </div>
+
+        <!-- Extras / Upsell -->
+        <div id="extrasSection" class="space-y-3">
+          <h4 class="text-xs font-bold text-slate-300 uppercase tracking-wider">Adicionais & Acessórios Recomendados</h4>
+          <div id="extrasContainer" class="space-y-2">
+            <!-- Dynamic Extras Checkboxes -->
+          </div>
+        </div>
+
+        <!-- Notes -->
+        <div>
+          <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Observações do Pedido</label>
+          <textarea id="modalProductNotes" rows="2" placeholder="Ex: Preferência de sabor, horários de entrega..." class="w-full bg-black border border-amber-900/40 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400 resize-none"></textarea>
+        </div>
+
+        <!-- Quantity & Add to Cart -->
+        <div class="flex items-center gap-4 pt-2">
+          <div class="flex items-center border border-amber-900/40 rounded-xl bg-black p-1">
+            <button onclick="updateModalQty(-1)" class="w-10 h-10 text-amber-400 hover:bg-amber-500/10 rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-minus text-xs"></i>
+            </button>
+            <span id="modalQty" class="w-10 text-center font-bold text-white">1</span>
+            <button onclick="updateModalQty(1)" class="w-10 h-10 text-amber-400 hover:bg-amber-500/10 rounded-lg flex items-center justify-center">
+              <i class="fa-solid fa-plus text-xs"></i>
+            </button>
+          </div>
+
+          <button onclick="addCurrentProductToCart()" class="flex-1 h-12 gold-gradient hover:brightness-110 text-black font-black uppercase tracking-wider text-xs sm:text-sm rounded-xl shadow-lg gold-glow flex items-center justify-center gap-2 transition-all">
+            <span>Adicionar ao Carrinho</span>
+            <span id="modalAddPrice" class="font-black text-black/80">(R$ 0,00)</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 modal-backdrop hidden items-center justify-center p-4 transition-all duration-300">
+    <div class="bg-[#0A0D14] border border-amber-500/30 w-full max-w-xl rounded-2xl max-h-[90vh] flex flex-col overflow-hidden shadow-2xl">
+      
+      <!-- Checkout Header -->
+      <div class="p-4 border-b border-amber-900/30 flex items-center justify-between bg-black">
+        <h3 class="text-base font-black text-white uppercase tracking-wider flex items-center gap-2">
+          <i class="fa-solid fa-cart-shopping text-amber-400"></i> Checkout do Pedido
+        </h3>
+        <button onclick="toggleModal('checkoutModal', false)" class="text-slate-400 hover:text-white p-1">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-6 flex-1 no-scrollbar">
+        <!-- Selected Items List -->
+        <div>
+          <h4 class="text-xs font-bold text-amber-400/80 uppercase tracking-wider mb-3">Itens Selecionados</h4>
+          <div id="checkoutItemsList" class="space-y-3 divide-y divide-amber-900/20">
+            <!-- Dynamic Cart Items -->
+          </div>
+        </div>
+
+        <!-- Coupon Section -->
+        <div class="bg-black p-3.5 rounded-xl border border-amber-900/30">
+          <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Cupom de Desconto</label>
+          <div class="flex gap-2">
+            <input type="text" id="couponInput" placeholder="Digite NITROSUP" class="flex-1 bg-[#0A0D14] border border-amber-900/40 rounded-lg px-3 py-2 text-sm text-white uppercase focus:outline-none focus:border-amber-400">
+            <button onclick="applyCoupon()" class="px-4 py-2 bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 text-xs font-bold uppercase rounded-lg border border-amber-500/30 transition-all">Aplicar</button>
+          </div>
+          <p id="couponMsg" class="text-xs mt-2 hidden"></p>
+        </div>
+
+        <!-- Customer Data Form -->
+        <div class="space-y-3">
+          <h4 class="text-xs font-bold text-amber-400/80 uppercase tracking-wider">Dados para Entrega</h4>
+          
+          <input type="text" id="custName" placeholder="Seu Nome Completo" class="w-full bg-black border border-amber-900/40 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400">
+          
+          <input type="text" id="custAddress" placeholder="Endereço Completo (Barcarena)" class="w-full bg-black border border-amber-900/40 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400">
+
+          <div>
+            <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Forma de Pagamento</label>
+            <select id="custPayment" class="w-full bg-black border border-amber-900/40 rounded-xl p-3 text-sm text-white focus:outline-none focus:border-amber-400">
+              <option value="Pix (Aprovação Instantânea)">Pix (Aprovação Instantânea)</option>
+              <option value="Cartão de Crédito/Débito">Cartão de Crédito / Débito (Na entrega)</option>
+              <option value="Dinheiro">Dinheiro</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Financial Summary -->
+        <div class="border-t border-amber-900/30 pt-4 space-y-2 text-sm">
+          <div class="flex justify-between text-slate-400">
+            <span>Subtotal</span>
+            <span id="summarySubtotal">R$ 0,00</span>
+          </div>
+          <div id="summaryDiscountRow" class="flex justify-between text-emerald-400 hidden">
+            <span>Desconto (10%)</span>
+            <span id="summaryDiscount">- R$ 0,00</span>
+          </div>
+          <div class="flex justify-between text-lg font-black text-white pt-2 border-t border-amber-900/30">
+            <span>Total</span>
+            <span id="summaryTotal" class="gold-text-gradient">R$ 0,00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Checkout Action -->
+      <div class="p-4 border-t border-amber-900/30 bg-black">
+        <button onclick="finishOrderWhatsApp()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-lg shadow-emerald-600/20 flex items-center justify-center gap-2 transition-all">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Finalizar no WhatsApp</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // 1. CATALOG DATA
+    const CATALOG_ITEMS = [
+      {
+        id: '1',
+        title: 'Nitro 100% Pure Whey HD 900g',
+        category: 'Whey Protein',
+        price: 139.90,
+        image: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=600&auto=format&fit=crop',
+        description: 'Proteína concentrada do soro do leite de altíssima pureza e absorção rápida. Contém 24g de proteína e 5.5g de BCAA por dose.',
+        extras: [
+          { id: 'ex1', title: 'Coqueteira Nitro Gold 700ml', price: 29.90 },
+          { id: 'ex2', title: 'Dose Extra de Creatina (100g)', price: 39.90 }
+        ]
+      },
+      {
+        id: '2',
+        title: 'Creatina Monohidratada Ultra Pure 300g',
+        category: 'Creatina',
+        price: 89.90,
+        image: 'https://images.unsplash.com/photo-1579722821273-0f6c7d44362f?q=80&w=600&auto=format&fit=crop',
+        description: 'Creatina 100% pura micronizada e monohidratada. Maximiza o ganho de força, resistência e explosão muscular.',
+        extras: [
+          { id: 'ex3', title: 'Scoop Dosador de Precisão em Metal', price: 12.90 }
+        ]
+      },
+      {
+        id: '3',
+        title: 'Pré-Treino Venom Explosion 300g',
+        category: 'Pré-Treino',
+        price: 119.90,
+        image: 'https://images.unsplash.com/photo-1546483875-ad9014c88eba?q=80&w=600&auto=format&fit=crop',
+        description: 'Fórmula ultra concentrada com Beta-Alanina, Cafeína e Arginina. Proporciona foco absoluto e energia imediata.',
+        extras: [
+          { id: 'ex1', title: 'Coqueteira Nitro Gold 700ml', price: 29.90 },
+          { id: 'ex4', title: 'Amostras de Outros Sabores (3x)', price: 15.00 }
+        ]
+      },
+      {
+        id: '4',
+        title: 'Hipercalórico Mass Gains Nitro 3kg',
+        category: 'Hipercalórico',
+        price: 109.90,
+        image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop',
+        description: 'Desenvolvido para suporte calórico de alta performance. Blend completo de carboidratos e proteínas de alto valor biológico.',
+        extras: [
+          { id: 'ex1', title: 'Coqueteira Nitro Gold 700ml', price: 29.90 }
+        ]
+      },
+      {
+        id: '5',
+        title: 'Termogênico Thermo Nitro X 120 Cap',
+        category: 'Termogênico',
+        price: 79.90,
+        image: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?q=80&w=600&auto=format&fit=crop',
+        description: 'Acelerador metabólico avançado com cafeína anidra e L-Carnitina. Auxilia na definição muscular e queima de gordura.',
+        extras: [
+          { id: 'ex5', title: 'Porta Cápsulas Tático Black/Gold', price: 19.90 }
+        ]
+      },
+      {
+        id: '6',
+        title: 'Cinto de Agachamento em Couro Black/Gold',
+        category: 'Acessórios',
+        price: 149.90,
+        image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop',
+        description: 'Cinto de estabilização lombar em couro genuíno reforçado para treinos pesados de agachamento e levantamento terra.',
+        extras: []
+      },
+      {
+        id: '7',
+        title: 'Iso Whey Hydro Zero Carbs 900g',
+        category: 'Whey Protein',
+        price: 219.90,
+        image: 'https://images.unsplash.com/photo-1593095948071-474c5cc2989d?q=80&w=600&auto=format&fit=crop',
+        description: 'Whey isolado e hidrolisado de altíssima rapidez na absorção. Zero carboidratos, zero gordura e zero lactose.',
+        extras: [
+          { id: 'ex1', title: 'Coqueteira Nitro Gold 700ml', price: 29.90 }
+        ]
+      },
+      {
+        id: '8',
+        title: 'Strap Profissional de Carga (Par)',
+        category: 'Acessórios',
+        price: 34.90,
+        image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=600&auto=format&fit=crop',
+        description: 'Fitas de apoio de pegada em algodão reforçado. Permite focar a força nos músculos primários evitando a fadiga do antebraço.',
+        extras: []
+      }
+    ];
+
+    const CATEGORIES = [
+      { name: 'Todos', icon: 'fa-layer-group' },
+      { name: 'Whey Protein', icon: 'fa-jar' },
+      { name: 'Creatina', icon: 'fa-cubes-stacked' },
+      { name: 'Pré-Treino', icon: 'fa-bolt-lightning' },
+      { name: 'Hipercalórico', icon: 'fa-weight-scale' },
+      { name: 'Termogênico', icon: 'fa-fire-flame-curved' },
+      { name: 'Acessórios', icon: 'fa-dumbbell' }
+    ];
+
+    // 2. STATE
+    let selectedCategory = 'Todos';
+    let cart = [];
+    let currentModalProduct = null;
+    let currentModalQty = 1;
+    let appliedCoupon = null;
+
+    // 3. INIT
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCategories();
+      renderProducts();
+    });
+
+    // 4. RENDERS
+    function renderCategories() {
+      const container = document.getElementById('categoriesContainer');
+      container.innerHTML = CATEGORIES.map(cat => {
+        const isActive = cat.name === selectedCategory;
+        const activeClasses = isActive 
+          ? 'gold-gradient text-black font-extrabold shadow-lg gold-glow border-amber-400' 
+          : 'bg-[#0A0D14] text-slate-300 border-amber-900/30 hover:border-amber-500/50';
+
+        return `
+          <button onclick="selectCategory('${cat.name}')" class="flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border whitespace-nowrap transition-all uppercase tracking-wider ${activeClasses}">
+            <i class="fa-solid ${cat.icon} text-xs"></i>
+            ${cat.name}
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      const filtered = selectedCategory === 'Todos' 
+        ? CATALOG_ITEMS 
+        : CATALOG_ITEMS.filter(item => item.category === selectedCategory);
+
+      document.getElementById('itemCount').innerText = `${filtered.length} produto(s)`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<p class="col-span-full text-center text-slate-500 py-8">Nenhum produto encontrado nesta categoria.</p>`;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(item => `
+        <div class="glass-card gold-glow-hover rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 group">
+          <div class="relative h-48 bg-black flex items-center justify-center p-4 border-b border-amber-900/20">
+            <img src="${item.image}" alt="${item.title}" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-3 left-3 bg-black/80 border border-amber-500/30 text-amber-400 text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider">
+              ${item.category}
+            </span>
+          </div>
+
+          <div class="p-4 flex-1 flex flex-col justify-between">
+            <div>
+              <h3 class="font-extrabold text-sm sm:text-base text-white group-hover:text-amber-400 transition-colors line-clamp-2">${item.title}</h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-2">${item.description}</p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-amber-900/20 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] text-slate-500 block uppercase font-bold tracking-wider">A partir de</span>
+                <span class="text-lg font-black gold-text-gradient">R$ ${item.price.toFixed(2).replace('.', ',')}</span>
+              </div>
+              
+              <button onclick="openProductModal('${item.id}')" class="px-3 py-2 rounded-xl bg-black hover:bg-amber-500 text-amber-400 hover:text-black text-xs font-extrabold transition-all border border-amber-500/30 hover:border-amber-400 uppercase tracking-wider">
+                Detalhes
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function selectCategory(catName) {
+      selectedCategory = catName;
+      renderCategories();
+      renderProducts();
+    }
+
+    // 5. SEARCH LOGIC
+    function handleSearch() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const resultsContainer = document.getElementById('searchResults');
+
+      if (!query) {
+        resultsContainer.innerHTML = `<p class="col-span-full text-center text-slate-500">Digite algo para buscar suplementos...</p>`;
+        return;
+      }
+
+      const results = CATALOG_ITEMS.filter(item => 
+        item.title.toLowerCase().includes(query) || 
+        item.description.toLowerCase().includes(query) ||
+        item.category.toLowerCase().includes(query)
+      );
+
+      if (results.length === 0) {
+        resultsContainer.innerHTML = `<p class="col-span-full text-center text-slate-500">Nenhum produto encontrado para "${query}".</p>`;
+        return;
+      }
+
+      resultsContainer.innerHTML = results.map(item => `
+        <div onclick="toggleModal('searchModal', false); openProductModal('${item.id}')" class="glass-card p-3 rounded-xl flex items-center gap-3 cursor-pointer hover:border-amber-400 transition-all">
+          <img src="${item.image}" alt="${item.title}" class="w-14 h-14 object-contain rounded-lg bg-black p-1">
+          <div>
+            <h4 class="text-sm font-bold text-white leading-tight">${item.title}</h4>
+            <p class="text-xs gold-text-gradient font-black mt-1">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 6. PRODUCT MODAL & UPSELL
+    function openProductModal(productId) {
+      const product = CATALOG_ITEMS.find(p => p.id === productId);
+      if (!product) return;
+
+      currentModalProduct = product;
+      currentModalQty = 1;
+
+      document.getElementById('modalProductImg').src = product.image;
+      document.getElementById('modalProductCategory').innerText = product.category;
+      document.getElementById('modalProductTitle').innerText = product.title;
+      document.getElementById('modalProductPrice').innerText = `R$ ${product.price.toFixed(2).replace('.', ',')}`;
+      document.getElementById('modalProductDesc').innerText = product.description;
+      document.getElementById('modalProductNotes').value = '';
+      document.getElementById('modalQty').innerText = currentModalQty;
+
+      const extrasSection = document.getElementById('extrasSection');
+      const extrasContainer = document.getElementById('extrasContainer');
+
+      if (product.extras && product.extras.length > 0) {
+        extrasSection.classList.remove('hidden');
+        extrasContainer.innerHTML = product.extras.map(extra => `
+          <label class="flex items-center justify-between p-3 rounded-xl bg-black border border-amber-900/30 cursor-pointer hover:border-amber-500/50 transition-all">
+            <div class="flex items-center gap-3">
+              <input type="checkbox" value="${extra.id}" data-price="${extra.price}" data-title="${extra.title}" onchange="updateModalTotalPrice()" class="custom-checkbox modal-extra-cb">
+              <span class="text-xs sm:text-sm font-medium text-slate-200">${extra.title}</span>
+            </div>
+            <span class="text-xs font-bold text-amber-400">+ R$ ${extra.price.toFixed(2).replace('.', ',')}</span>
+          </label>
+        `).join('');
+      } else {
+        extrasSection.classList.add('hidden');
+        extrasContainer.innerHTML = '';
+      }
+
+      updateModalTotalPrice();
+      toggleModal('productModal', true);
+    }
+
+    function updateModalQty(delta) {
+      if (currentModalQty + delta >= 1) {
+        currentModalQty += delta;
+        document.getElementById('modalQty').innerText = currentModalQty;
+        updateModalTotalPrice();
+      }
+    }
+
+    function updateModalTotalPrice() {
+      if (!currentModalProduct) return;
+
+      let basePrice = currentModalProduct.price;
+      const checkedExtras = document.querySelectorAll('.modal-extra-cb:checked');
+      
+      checkedExtras.forEach(cb => {
+        basePrice += parseFloat(cb.getAttribute('data-price'));
+      });
+
+      const total = basePrice * currentModalQty;
+      document.getElementById('modalAddPrice').innerText = `(R$ ${total.toFixed(2).replace('.', ',')})`;
+    }
+
+    function addCurrentProductToCart() {
+      if (!currentModalProduct) return;
+
+      const checkedExtras = Array.from(document.querySelectorAll('.modal-extra-cb:checked')).map(cb => ({
+        id: cb.value,
+        title: cb.getAttribute('data-title'),
+        price: parseFloat(cb.getAttribute('data-price'))
+      }));
+
+      const notes = document.getElementById('modalProductNotes').value.trim();
+
+      let unitPrice = currentModalProduct.price;
+      checkedExtras.forEach(ex => unitPrice += ex.price);
+
+      cart.push({
+        cartItemId: Date.now().toString(),
+        product: currentModalProduct,
+        quantity: currentModalQty,
+        selectedExtras: checkedExtras,
+        unitPrice: unitPrice,
+        notes: notes
+      });
+
+      updateCartUI();
+      toggleModal('productModal', false);
+    }
+
+    // 7. CART & CHECKOUT
+    function updateCartUI() {
+      const cartBar = document.getElementById('cartBar');
+      const whatsappBtn = document.getElementById('whatsappBtn');
+      const cartBadge = document.getElementById('cartBadge');
+      const cartTotal = document.getElementById('cartTotal');
+
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      const totalAmount = cart.reduce((sum, item) => sum + (item.unitPrice * item.quantity), 0);
+
+      cartBadge.innerText = totalItems;
+      cartTotal.innerText = `R$ ${totalAmount.toFixed(2).replace('.', ',')}`;
+
+      if (cart.length > 0) {
+        cartBar.classList.remove('translate-y-full');
+        whatsappBtn.classList.add('bottom-24');
+        whatsappBtn.classList.remove('bottom-6');
+      } else {
+        cartBar.classList.add('translate-y-full');
+        whatsappBtn.classList.remove('bottom-24');
+        whatsappBtn.classList.add('bottom-6');
+      }
+    }
+
+    function openCheckoutModal() {
+      renderCheckoutItems();
+      calculateCheckoutFinancials();
+      toggleModal('checkoutModal', true);
+    }
+
+    function renderCheckoutItems() {
+      const container = document.getElementById('checkoutItemsList');
+      if (cart.length === 0) {
+        container.innerHTML = `<p class="text-center text-slate-500 py-4">Sua sacola está vazia.</p>`;
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="pt-3 first:pt-0 flex items-start justify-between gap-3">
+          <div class="flex-1">
+            <h5 class="text-xs sm:text-sm font-bold text-white">${item.product.title}</h5>
+            <p class="text-xs text-slate-400">Qtd: ${item.quantity} x R$ ${item.unitPrice.toFixed(2).replace('.', ',')}</p>
+            ${item.selectedExtras.length > 0 ? `
+              <ul class="mt-1 space-y-0.5">
+                ${item.selectedExtras.map(ex => `<li class="text-[11px] text-amber-400">+ ${ex.title} (R$ ${ex.price.toFixed(2).replace('.', ',')})</li>`).join('')}
+              </ul>
+            ` : ''}
+            ${item.notes ? `<p class="text-[11px] text-slate-400 italic mt-1">Obs: "${item.notes}"</p>` : ''}
+          </div>
+          <div class="text-right">
+            <span class="text-xs sm:text-sm font-bold text-white block">R$ ${(item.unitPrice * item.quantity).toFixed(2).replace('.', ',')}</span>
+            <button onclick="removeFromCart('${item.cartItemId}')" class="text-red-400 hover:text-red-300 text-xs mt-1">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function removeFromCart(cartItemId) {
+      cart = cart.filter(item => item.cartItemId !== cartItemId);
+      updateCartUI();
+      renderCheckoutItems();
+      calculateCheckoutFinancials();
+
+      if (cart.length === 0) {
+        toggleModal('checkoutModal', false);
+      }
+    }
+
+    function applyCoupon() {
+      const input = document.getElementById('couponInput').value.trim().toUpperCase();
+      const msg = document.getElementById('couponMsg');
+
+      if (input === 'NITROSUP') {
+        appliedCoupon = 'NITROSUP';
+        msg.innerText = 'Cupom de 10% aplicado com sucesso!';
+        msg.className = 'text-xs mt-2 text-amber-400 font-bold block';
+      } else {
+        appliedCoupon = null;
+        msg.innerText = 'Cupom inválido.';
+        msg.className = 'text-xs mt-2 text-red-400 font-bold block';
+      }
+
+      calculateCheckoutFinancials();
+    }
+
+    function calculateCheckoutFinancials() {
+      const subtotal = cart.reduce((sum, item) => sum + (item.unitPrice * item.quantity), 0);
+      let discount = appliedCoupon === 'NITROSUP' ? subtotal * 0.10 : 0;
+      const total = subtotal - discount;
+
+      document.getElementById('summarySubtotal').innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+      
+      const discountRow = document.getElementById('summaryDiscountRow');
+      if (discount > 0) {
+        discountRow.classList.remove('hidden');
+        document.getElementById('summaryDiscount').innerText = `- R$ ${discount.toFixed(2).replace('.', ',')}`;
+      } else {
+        discountRow.classList.add('hidden');
+      }
+
+      document.getElementById('summaryTotal').innerText = `R$ ${total.toFixed(2).replace('.', ',')}`;
+    }
+
+    // 8. WHATSAPP CHECKOUT
+    function finishOrderWhatsApp() {
+      if (cart.length === 0) return;
+
+      const name = document.getElementById('custName').value.trim();
+      const address = document.getElementById('custAddress').value.trim();
+      const payment = document.getElementById('custPayment').value;
+
+      if (!name || !address) {
+        alert('Por favor, preencha seu nome e endereço de entrega.');
+        return;
+      }
+
+      const subtotal = cart.reduce((sum, item) => sum + (item.unitPrice * item.quantity), 0);
+      let discount = appliedCoupon === 'NITROSUP' ? subtotal * 0.10 : 0;
+      const total = subtotal - discount;
+
+      let text = `⚡ *NOVO PEDIDO - NITRO SUPLEMENTOS* ⚡\n\n`;
+      text += `👤 *Cliente:* ${name}\n`;
+      text += `📍 *Endereço:* ${address}\n`;
+      text += `💳 *Forma de Pagamento:* ${payment}\n\n`;
+      text += `🛒 *ITENS DO PEDIDO:*\n`;
+
+      cart.forEach((item, idx) => {
+        text += `\n${idx + 1}. *${item.product.title}* (x${item.quantity})\n`;
+        text += `   Valor Unitário: R$ ${item.unitPrice.toFixed(2).replace('.', ',')}\n`;
+        
+        if (item.selectedExtras.length > 0) {
+          text += `   *Adicionais:*\n`;
+          item.selectedExtras.forEach(ex => {
+            text += `    + ${ex.title} (R$ ${ex.price.toFixed(2).replace('.', ',')})\n`;
+          });
+        }
+        if (item.notes) {
+          text += `   *Obs:* ${item.notes}\n`;
+        }
+      });
+
+      text += `\n------------------------------\n`;
+      text += `💰 *Subtotal:* R$ ${subtotal.toFixed(2).replace('.', ',')}\n`;
+      if (discount > 0) {
+        text += `🏷️ *Cupom NITROSUP (10%):* -R$ ${discount.toFixed(2).replace('.', ',')}\n`;
+      }
+      text += `🔥 *TOTAL:* R$ ${total.toFixed(2).replace('.', ',')}\n`;
+
+      const encodedText = encodeURIComponent(text);
+      const phoneNumber = '5591900000000';
+      window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
+    }
+
+    // 9. MODALS
+    function toggleModal(modalId, show) {
+      const modal = document.getElementById(modalId);
+      if (!modal) return;
+
+      if (modalId === 'productModal') {
+        const content = document.getElementById('productModalContent');
+        if (show) {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          setTimeout(() => {
+            content.classList.remove('translate-y-full');
+          }, 10);
+        } else {
+          content.classList.add('translate-y-full');
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+          }, 300);
+        }
+        return;
+      }
+
+      if (show) {
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        if (modalId === 'searchModal') {
+          document.getElementById('searchInput').focus();
+        }
+      } else {
+        modal.classList.add('opacity-0');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }, 300);
+      }
+    }
+  </script>
+</body>
+</html>
